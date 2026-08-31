@@ -1,570 +1,253 @@
+/* --- DESIGN SYSTEM VARIABLE TOKENS --- */
 :root {
-  --bg-deep: #030708;
-  /* Deep cyberdeck shadow black */
-  --grid-line: #00f3ff;
-  /* Tron neon cyan line */
-  --grid-dim: #004455;
-  /* Dimmed ambient cyan background lines */
-  --loud-yellow: #fce300;
-  /* Edgerunners hazard acid yellow */
-  --loud-magenta: #ff0055;
-  /* Edgerunners system alert pink */
-  --text-main: #e2f1f5;
-  /* High-visibility data white */
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --bg-void: #02050a;
+  --tron-cyan: #00f0ff;
+  --tron-dark-cyan: rgba(0, 240, 255, 0.1);
+  --tron-blue: #0066ff;
+  --text-primary: #ffffff;
+  --text-muted: #819bb0;
+  --font-mono: 'Courier New', Courier, monospace;
 }
 
+/* --- DOCUMENT RESET & BASE FOUNDATIONS --- */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  cursor: crosshair;
-  /* Forced cybernetic UI feel */
 }
 
 body {
-  background-color: var(--bg-deep);
-  color: var(--text-main);
+  background-color: var(--bg-void);
+  color: var(--text-primary);
   font-family: var(--font-mono);
-  overflow-x: hidden;
-}
-
-/* Master Cyberdeck Grid Container */
-.hud-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: minmax(100px, auto);
-  gap: 0px;
-  /* Snaps borders together perfectly */
-  max-width: 1600px;
-  margin: 0 auto;
-  border-left: 1px solid var(--grid-dim);
-  border-right: 1px solid var(--grid-dim);
-}
-
-/* Global Panel Properties */
-.hud-panel {
-  border: 1px solid var(--grid-dim);
-  padding: 2rem;
-  background-color: transparent;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
-  position: relative;
-}
-
-/* Hovering sharpens the grid boundaries */
-.hud-panel:hover {
-  border-color: var(--grid-line);
-}
-
-/* Explicit Layout Mapping */
-.cell-header {
-  grid-column: span 4;
+  min-height: 100vh;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  padding: 20px;
+}
+
+/* --- THE REFINED RESPONSIBLY ENGINEERED TRON VECTOR GRID --- */
+.vector-grid-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image:
+    linear-gradient(to right, rgba(0, 240, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 240, 255, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* --- SCREEN ARCHITECTURE HUD WRAPPER --- */
+.app-viewport {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* --- RESPONSIVE PREMIUM HEADER & NAVIGATION --- */
+.app-header {
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid var(--grid-line);
-  padding: 1rem 2rem;
-}
-
-/* Hero Panel Grid Mapping */
-.cell-hero {
-  grid-column: span 4;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 450px;
-}
-
-/* Panel Label Tagging */
-.panel-tag {
-  position: absolute;
-  top: 0.5rem;
-  left: 0.5rem;
-  font-size: 0.75rem;
-  color: var(--grid-line);
-  opacity: 0.7;
-}
-
-/* Massive Typography Customization */
-.identity-block {
-  margin-top: 2rem;
-}
-
-.main-title {
-  font-size: clamp(3rem, 8vw, 6.5rem);
-  font-weight: 900;
-  /* Fixed typo from 9090 */
-  line-height: 0.9;
-  letter-spacing: -2px;
-  color: var(--text-main);
-  text-transform: uppercase;
-}
-
-.sub-title {
-  font-size: 1rem;
-  color: var(--grid-line);
-  letter-spacing: 2px;
-  margin-top: 0.5rem;
-}
-
-/* Edgerunners Style High-Contrast Accent Banner */
-.hazard-banner {
-  background-color: var(--loud-yellow);
-  color: #000000;
-  padding: 0.5rem;
-  font-weight: 900;
-  font-size: 0.85rem;
-  letter-spacing: 3px;
-  margin: 2rem 0;
-  text-align: center;
-  transform: skewX(-6deg);
-  /* Skew element for high-octane anime energy */
-}
-
-/* Boot Terminal Interface */
-.boot-terminal {
-  background-color: rgba(0, 243, 255, 0.03);
-  border-top: 1px solid var(--grid-dim);
-  padding: 1rem;
-  font-size: 0.85rem;
-  color: #88aabb;
-}
-
-.terminal-line {
-  margin-bottom: 0.25rem;
-}
-
-.cell-projects {
-  grid-column: span 4;
-}
-
-.section-title {
-  font-size: 1.5rem;
-  font-weight: 900;
-  color: var(--text-main);
-  letter-spacing: 2px;
-  margin-bottom: 2rem;
-  margin-top: 1rem;
-  text-transform: uppercase;
-}
-
-.project-matrix {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-}
-
-.project-card {
-  border: 1px solid var(--grid-line);
-  background-color: rgba(3, 7, 8, .6);
-  padding: 1.5rem;
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 250px;
-  transition: transform .1s ease;
-}
-
-.project-card:hover {
-  border-color: var(--loud-magenta);
-  background-color: var(--loud-magenta);
-}
-
-.project-header {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.75rem;
-  color: var(--grid-line);
-  margin-bottom: 1rem;
-}
-
-.project-card:hover .project_id,
-.project-card:hover .project_status {
-  color: var(--bg-deep);
-  font-weight: 900;
-}
-
-.project-title {
-  font-size: 1.8rem;
-  font-weight: 900;
-  color: var(--text-main);
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
-}
-
-.project-card:hover .project-title {
-  color: #fff;
-}
-
-.project-desc {
-  font-size: 0.85rem;
-  line-height: 1.4;
-  color: #aa8899;
-  /* Dimmed contrast description text */
-  margin-bottom: 1.5rem;
-}
-
-.project-card:hover .project-desc {
-  color: var(--text-main);
-}
-
-/* High Contrast Structural Micro-Tags */
-.project-tags {
-  display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 20px;
+  border-bottom: 1px solid var(--tron-dark-cyan);
+  padding-bottom: 20px;
 }
 
-.project-tags span {
-  font-size: 0.7rem;
-  border: 1px solid var(--grid-dim);
-  padding: 0.2rem 0.5rem;
-  color: var(--grid-line);
-}
-
-.project-card:hover .project-tags span {
-  border-color: var(--text-main);
-  color: var(--text-main);
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
-.cell-skills {
-  grid-column: span 2;
-}
-
-/* Internal Category Structuring */
-.skills-grid {
+.brand-signature {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 4px;
 }
 
-.skills-category {
-  border-left: 2px solid --grid-dim;
-  padding-left: 1.5rem;
-}
-
-.skills-category:hover {
-  border-left-color: var(--grid-line);
-}
-
-.category-header {
-  font-size: 0.85rem;
-  font-weight: 900;
-  color: var(--grid-line);
-  letter-spacing: 2px;
-  margin-bottom: 1rem;
-}
-
-/* Individual Diagnostic Rows */
-.skill-row {
-  margin-bottom: 1rem;
-}
-
-.skill-name {
-  display: block;
-  font-size: 0.75rem;
-  color: #88aabb;
-  letter-spacing: 1px;
-  margin-bottom: 0.4rem;
-}
-
-/* Structural Data Performance Bars */
-.skill-bar {
-  width: 100%;
-  height: 6px;
-  background-color: rgba(0, 68, 85, 0.2);
-  border: 1px solid var(--grid-dim);
-  position: relative;
-}
-
-.skill-progress {
-  height: 100%;
-  background-color: var(--grid-line);
-}
-
-/* Edgerunners Override Component */
-.skill-progress.overlock {
-  background-color: var(--loud-magenta);
-  box-shadow: 0 0 8px var(--loud-magenta);
-}
-
-/* Operational History Panel Configuration */
-.cell-experience {
-  grid-column: span 2;
-  /* Occupies the remaining 2 columns next to Tech Stack */
-}
-
-.timeline-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-/* Individual Database Entries */
-.log-entry {
-  border: 1px solid var(--grid-dim);
-  padding: 1.25rem;
-  background-color: rgba(3, 7, 8, 0.4);
-  position: relative;
-}
-
-.log-entry:hover {
-  border-color: var(--grid-line);
-  background-color: rgba(0, 243, 255, 0.02);
-}
-
-/* Chronological Indicators */
-.log-timestamp {
-  font-size: 0.7rem;
-  font-weight: 900;
-  color: #000000;
-  background-color: var(--text-main);
-  padding: 0.2rem 0.6rem;
-  display: inline-block;
-  margin-bottom: 0.75rem;
-  letter-spacing: 1px;
-}
-
-.log-entry:hover .log-timestamp {
-  background-color: var(--loud-yellow);
-}
-
-/* Metadata Text Arrays */
-.log-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.log-role {
+.system-id {
   font-size: 1.1rem;
-  font-weight: 900;
-  color: var(--text-main);
-  letter-spacing: 1px;
-}
-
-.log-org {
-  font-size: 0.8rem;
-  font-weight: 900;
-  color: var(--grid-line);
-  letter-spacing: 1px;
-}
-
-.log-summary {
-  font-size: 0.85rem;
-  line-height: 1.4;
-  color: #aa8899;
-}
-
-.log-entry:hover .log-summary {
-  color: var(--text-main);
-}
-
-/* Uplink Handshake Panel Configuration */
-.cell-contact {
-  grid-column: span 4;
-  /* Spans full horizontal canvas area */
-  border-bottom: 2px solid var(--grid-line);
-}
-
-.uplink-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 3rem;
-  margin-top: 1rem;
-}
-
-/* Form Matrix Elements */
-.uplink-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.form-row {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.form-label {
-  font-size: 0.75rem;
-  color: var(--grid-line);
-  letter-spacing: 1px;
-}
-
-.form-input {
-  background-color: rgba(3, 7, 8, 0.8);
-  border: 1px solid var(--grid-dim);
-  padding: 0.8rem;
-  color: var(--text-main);
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  outline: none;
-  transition: border-color 0.1s ease;
-}
-
-/* Blazing Focus Intercept */
-.form-input:focus {
-  border-color: var(--grid-line);
-  background-color: rgba(0, 243, 255, 0.02);
-}
-
-.form-textarea {
-  min-height: 120px;
-  resize: vertical;
-}
-
-/* High-Contrast Loud Handshake Button */
-.uplink-btn {
-  background-color: transparent;
-  border: 1px solid var(--grid-line);
-  color: var(--grid-line);
-  font-family: var(--font-mono);
-  font-weight: 900;
-  padding: 1rem;
-  font-size: 0.9rem;
+  font-weight: bold;
   letter-spacing: 2px;
-  text-align: center;
-  text-transform: uppercase;
-  transition: all 0.1s ease;
 }
 
-.uplink-btn:hover {
-  background-color: var(--grid-line);
-  color: #000000;
-}
-
-/* Interactive Direct Shortcut Panel */
-.terminal-shortcuts {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.shortcut-header {
-  font-size: 0.8rem;
-  color: #88aabb;
+.status-indicator {
+  font-size: 0.75rem;
+  color: var(--tron-cyan);
   letter-spacing: 1px;
-  margin-bottom: 0.5rem;
 }
 
-.shortcut-node {
-  background-color: rgba(0, 68, 85, 0.1);
-  border: 1px solid var(--grid-dim);
-  padding: 0.8rem 1.2rem;
-  color: var(--text-main);
-  text-decoration: none;
+.app-nav {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  background: transparent;
+  border: 1px solid var(--tron-dark-cyan);
+  color: var(--text-muted);
+  font-family: inherit;
   font-size: 0.8rem;
-  text-align: left;
-  font-family: var(--font-mono);
-  display: block;
-  transition: all 0.1s ease;
+  font-weight: bold;
+  padding: 10px 18px;
+  cursor: pointer;
+  transition: all 0.25s ease;
 }
 
-.shortcut-node:hover {
-  border-color: var(--loud-yellow);
-  color: var(--loud-yellow);
+.nav-link:hover,
+.nav-link.active {
+  color: var(--text-primary);
+  border-color: var(--tron-cyan);
+  background: rgba(0, 240, 255, 0.03);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
 }
 
-.cmd-token {
-  color: var(--grid-line);
-  font-weight: 900;
-  margin-right: 0.5rem;
+/* --- MAIN INTERFACE DISPLAY DECK CONTAINER --- */
+.display-deck {
+  position: relative;
+  background: rgba(3, 7, 15, 0.9);
+  border: 1px solid var(--tron-blue);
+  padding: 40px;
+  min-height: 480px;
+  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 0 30px rgba(0, 102, 255, 0.03);
 }
 
-.shortcut-node:hover .cmd-token {
-  color: var(--loud-yellow);
+.content-wrapper {
+  animation: fadeInView 0.3s ease-out;
 }
 
-/* Responsive Structural Fallbacks for Mobile Layout Viewports */
-@media (max-width: 900px) {
-  .hud-container {
-    grid-template-columns: 1fr;
+@keyframes fadeInView {
+  from {
+    opacity: 0;
   }
 
-  .cell-hero,
-  .cell-projects,
-  .cell-skills,
-  .cell-experience,
-  .cell-contact {
-    grid-column: span 1;
-  }
-
-  .uplink-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-}
-
-/* ==========================================================================
-   CYBERDECK RESPONSIVE INTERFACE GRID SYSTEM
-   ========================================================================== */
-
-/* --- BREAKPOINT 1: TABLET MAPPING (Screens up to 1024px wide) --- */
-@media (max-width: 1024px) {
-  .hud-container {
-    grid-template-columns: repeat(2, 1fr);
-    /* Collapse from 4 columns to 2 */
-  }
-
-  .cell-header,
-  .cell-hero,
-  .cell-projects,
-  .cell-contact {
-    grid-column: span 2;
-    /* Span full width of the new 2-column grid */
-  }
-
-  .cell-skills,
-  .cell-experience {
-    grid-column: span 1;
-    /* Side-by-side split stays balanced on tablet layouts */
-  }
-
-  .uplink-grid {
-    grid-template-columns: 1fr;
-    /* Stack the contact form and shortcuts vertically */
-    gap: 2rem;
+  to {
+    opacity: 1;
   }
 }
 
-/* --- BREAKPOINT 2: MOBILE PHONES (Screens up to 640px wide) --- */
-@media (max-width: 640px) {
-  .hud-container {
-    grid-template-columns: 1fr;
-    /* Pure single column stack */
+.content-title {
+  font-size: 2.2rem;
+  font-weight: 300;
+  letter-spacing: 4px;
+  margin-bottom: 20px;
+  text-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
+}
+
+.summary-text {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  max-width: 750px;
+  margin-bottom: 40px;
+}
+
+/* --- RESPONSIBLY ADAPTIVE GRID SYSTEMS MAPPING --- */
+.matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.matrix-card {
+  position: relative;
+  border: 1px solid rgba(0, 102, 255, 0.15);
+  background: rgba(2, 4, 8, 0.5);
+  padding: 25px;
+}
+
+.card-border-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: var(--tron-blue);
+}
+
+.matrix-card h3 {
+  font-size: 1rem;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  color: var(--tron-cyan);
+}
+
+.matrix-card p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* --- LIVE WIDGET INPUTS & BUTTONS --- */
+.tron-input {
+  background: rgba(2, 4, 8, 0.8);
+  border: 1px solid var(--tron-dark-cyan);
+  padding: 12px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.8rem;
+  outline: none;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.tron-input:focus {
+  border-color: var(--tron-cyan);
+}
+
+.tron-btn {
+  background: transparent;
+  border: 1px solid var(--tron-cyan);
+  color: var(--tron-cyan);
+  padding: 10px 20px;
+  font-family: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.tron-btn:hover {
+  background: rgba(0, 240, 255, 0.1);
+}
+
+.binary-output {
+  margin-top: 10px;
+  background: #000;
+  padding: 10px;
+  border: 1px dashed var(--tron-cyan);
+  font-size: 0.8rem;
+  color: #39ff14;
+  /* Matrix Green */
+  word-break: break-all;
+  min-height: 35px;
+}
+
+/* --- RESPONSIVE MEDIA TUNING CONFIGURATIONS --- */
+@media (max-width: 768px) {
+  body {
+    padding: 15px;
   }
 
-  .cell-header,
-  .cell-hero,
-  .cell-projects,
-  .cell-skills,
-  .cell-experience,
-  .cell-contact {
-    grid-column: span 1;
-    /* Force every block to occupy its own row */
-  }
-
-  .project-matrix {
-    grid-template-columns: 1fr;
-    /* Stack individual project cards vertically */
-  }
-
-  .cell-header {
+  .app-header {
     flex-direction: column;
-    /* Stack top title and live clock vertically */
     align-items: flex-start;
-    gap: 0.5rem;
   }
 
-  .main-title {
-    font-size: 2.8rem;
-    /* Scale down title slightly so it never clips edges */
+  .display-deck {
+    padding: 25px;
+  }
+
+  .content-title {
+    font-size: 1.7rem;
   }
 }

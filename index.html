@@ -4,214 +4,42 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CYBERDECK // CORE_OS</title>
+    <title>Systems Architect // Portfolio</title>
     <link rel="stylesheet" href="style.css">
   </head>
 
   <body>
-    <div class="hud-container">
-      <!-- Header Bar -->
-      <header class="hud-panel cell-header">
-        <div class="glitch-text" data-text="SYSTEM: ACTIVE">SYSTEM: ACTIVE</div>
-        <div class="header-timestamp" id="hud-clock">00:00:00 SYS_LOC</div>
+
+    <!-- CSS Structural Vector Grid Layer -->
+    <div class="vector-grid-overlay"></div>
+
+    <!-- Main Viewport Interface Box -->
+    <div class="app-viewport">
+
+      <!-- Navigation Header Block -->
+      <header class="app-header">
+        <div class="brand-signature">
+          <span class="system-id">SYS_ARCHITECT // TRON_CORE</span>
+          <span class="status-indicator">SYSTEM_ACTIVE</span>
+        </div>
+
+        <nav class="app-nav">
+          <button class="nav-link active" data-tab="profile" onclick="switchTab(this)">PROFILE</button>
+          <button class="nav-link" data-tab="projects" onclick="switchTab(this)">ENGAGEMENTS</button>
+          <button class="nav-link" data-tab="contact" onclick="switchTab(this)">UPLINK</button>
+        </nav>
       </header>
 
-      <!-- Section 1 CORE IDENTITY -->
-      <section id="core" class="hud-panel cell-hero">
-        <div class="panel-tag">[01 // CORE_ID]</div>
-        <h1 class="main-title">JOSEPH</h1>
-        <p class="sub-title">// FULL-STACK CREATIVE ARCHITECT</p>
-
-        <!-- EDGERUNNERS STYLE HIGH-CONTRAST ACCENT BANNER -->
-        <div class="hazard-banner">
-          <span class="banner-text">WARNING: SYSTEM OVERCLOCK ACTIVE</span>
+      <!-- Main Display Deck Area -->
+      <main class="display-deck">
+        <!-- Dynamic Modular Workspace Target -->
+        <div id="deck-content" class="content-wrapper">
+          <!-- JavaScript will instantly inject content here -->
         </div>
-
-        <!-- Interactive Mini Boot Log -->
-        <div class="boot-terminal">
-          <div class="terminal-line">>> STACK_INIT: SUCCESSFUL...</div>
-          <div class="terminal-line">>> LINK_ESTABLISHED: PORT_443...</div>
-          <div class="terminal-line" id="dynamic-log">>> LOADING PERIPHERALS...</div>
-        </div>
-      </section>
-
-      <!-- SECTION 2 PROJECTS -->
-      <section id="files" class="hud-panel cell-projects">
-        <div class="panel-tag">[02 // FILE_SYSTEM]</div>
-        <h2 class="section-title">>> ARCHIVED_ARTIFACTS</h2>
-        <div class="project-matrix">
-          <!-- PROJECT NODE 1 -->
-          <a href="https://github.com/Hermit-commits-code/nitro-engine" class="project-card">
-            <div class="project-header">
-              <span class="project-id">DIR://PROJ_01</span>
-              <span class="project-status">[STABLE]</span>
-            </div>
-            <h3 class="project-title">NITRO_ENGINE</h3>
-            <p class="project-desc">High-performance reactive infrastructure constructed using raw vanilla components
-              for sub-atomic
-              load speeds.</p>
-            <div class="project-tags">
-              <span>HTML5</span><span>CSS_GRID</span><span>VANILLA_JS</span>
-            </div>
-          </a>
-          <!-- PROJECT NODE 2 -->
-          <a href="#" class="project-card">
-            <div class="project-header">
-              <span class="project-id">DIR://PROJ_02</span>
-              <span class="project-status">[STABLE]</span>
-            </div>
-            <h3 class="project-title">CHROME_NET</h3>
-            <p class="project-desc">A deep-dive data visualizer that intercepts external API metrics and charts raw
-              network
-              telemetry streams.</p>
-            <div class="project-tags">
-              <span>WEB_SOCKETS</span><span>D3_DATA</span><span>SECURE_AUTH</span>
-            </div>
-          </a>
-          <!-- PROJECT NODE 3 -->
-          <a href="#" class="project-card">
-            <div class="project-header">
-              <span class="project-id">DIR://PROJ_03</span>
-              <span class="project-status">[OVERCLOCKED]</span>
-            </div>
-            <h3 class="project-title">SAND_VISION</h3>
-            <p class="project-desc">An experimental web animation system built around extreme motion-blur shaders and
-              CSS-driven
-              time dilation matrix layers.</p>
-            <div class="project-tags">
-              <span>WEBGL</span><span>CSS_SHADERS</span><span>ASYNC_LOOP</span>
-            </div>
-          </a>
-        </div>
-      </section>
-
-
-      <!-- SECTION 3: TECH STACK -->
-      <section id="tech" class="hud-panel cell-skills">
-        <div class="panel-tag">[03 // TECH_STACK]</div>
-        <h2 class="section-title">> MODULE_LOADOUT</h2>
-
-        <div class="skills-grid">
-          <div class="skills-category">
-            <div class="category-header">L01 // UI_ENGINES</div>
-
-            <div class="skill-row">
-              <span class="skill-name">REACT_ARCHITECTURE_19</span>
-              <div class="skill-bar">
-                <div class="skill-progress overlock" style="width: 90%;"></div>
-              </div>
-            </div>
-
-            <div class="skill-row">
-              <span class="skill-name">TAILWIND_CSS</span>
-              <div class="skill-bar">
-                <div class="skill-progress" style="width: 95%;"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- CORE DATA COMPUTATION MATRIX -->
-          <div class="skills-category">
-            <div class="category-header">L02 // DATA_ENGINES</div>
-
-            <div class="skill-row">
-              <span class="skill-name">PYTHON</span>
-              <div class="skill-bar">
-                <div class="skill-progress" style="width: 85%;"></div>
-              </div>
-            </div>
-
-            <div class="skill-row">
-              <span class="skill-name">SQL</span>
-              <div class="skill-bar">
-                <div class="skill-progress overlock" style="width: 80%;"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </section>
-
-      <!-- SECTION 4: LOG BOOK (EXPERIENCE) -->
-      <section id="logs" class="hud-panel cell-experience">
-        <div class="panel-tag">[04 // LOG_BOOK]</div>
-        <h2 class="section-title">> OPERATIONAL_HISTORY</h2>
-
-        <div class="timeline-container">
-
-          <!-- TIMELINE ENTRY 1 -->
-          <div class="log-entry">
-            <div class="log-timestamp">2024 - PRESENT</div>
-            <div class="log-meta">
-              <h3 class="log-role">SR. FRONTEND NETRUNNER</h3>
-              <span class="log-org">@ NEXUS_CORP</span>
-            </div>
-            <p class="log-summary">Overhauling legacy core architecture into absolute performance-first layout engines.
-              Shielding client layers from layout shift bugs.</p>
-          </div>
-
-          <!-- TIMELINE ENTRY 2 -->
-          <div class="log-entry">
-            <div class="log-timestamp">2022 - 2024</div>
-            <div class="log-meta">
-              <h3 class="log-role">INTERFACE DEVELOPER</h3>
-              <span class="log-org">@ KANAGAWA_MEDIA</span>
-            </div>
-            <p class="log-summary">Architected modular internal dashboards. Deployed sub-atomic asset pipelines ensuring
-              ultra-responsive render cycles across standard arrays.</p>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- SECTION 5: UPLINK (CONTACT) -->
-      <footer id="uplink" class="hud-panel cell-contact">
-        <div class="panel-tag">[05 // UPLINK_HANDSHAKE]</div>
-        <h2 class="section-title">> ESTABLISH_COMM_LINK</h2>
-
-        <div class="uplink-grid">
-
-          <!-- Live Intercept Form -->
-          <form class="uplink-form"
-            onsubmit="event.preventDefault(); alert('LINK_ESTABLISHED: MESSAGE INJECTED INTO THE STREAM.');">
-            <div class="form-row">
-              <label class="form-label">SRC_IDENTITY:</label>
-              <input type="text" class="form-input" placeholder="YOUR_NAME // ENTITY_ID" required>
-            </div>
-            <div class="form-row">
-              <label class="form-label">SRC_ENDPOINT:</label>
-              <input type="email" class="form-input" placeholder="SECURE_EMAIL@DOMAIN.COM" required>
-            </div>
-            <div class="form-row">
-              <label class="form-label">DATA_PAYLOAD:</label>
-              <textarea class="form-input form-textarea"
-                placeholder="TRANSMIT PROJECT SPECIFICATIONS OR CONTRACT TERMS..." required></textarea>
-            </div>
-            <button type="submit" class="uplink-btn">EXECUTE_HANDSHAKE</button>
-          </form>
-
-          <!-- Command Shortcuts Array -->
-          <div class="terminal-shortcuts">
-            <div class="shortcut-header">// DIRECT_COMMS_CHANNELS</div>
-
-            <button class="shortcut-node"
-              onclick="navigator.clipboard.writeText('your.email@domain.com'); this.innerText='COPIED_TO_CLIPBOARD'; setTimeout(()=>this.innerText='COPY_EMAIL_STRING', 2000)">
-              <span class="cmd-token">CMD:</span> COPY_EMAIL_STRING
-            </button>
-
-            <a href="#" target="_blank" class="shortcut-node">
-              <span class="cmd-token">NET:</span> CLONE_GITHUB_REPOS
-            </a>
-
-            <a href="#" target="_blank" class="shortcut-node">
-              <span class="cmd-token">LNK:</span> ACCESS_LINKEDIN_CORE
-            </a>
-          </div>
-
-        </div>
-      </footer>
+      </main>
     </div>
-    <script src="app.js"></script>
+
+    <script src="engine.js"></script>
   </body>
 
 </html>
