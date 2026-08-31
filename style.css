@@ -1,11 +1,12 @@
-/* --- DESIGN SYSTEM VARIABLE TOKENS --- */
+/* --- ACCESSIBLE TRON DESIGN SYSTEM --- */
 :root {
   --bg-void: #02050a;
   --tron-cyan: #00f0ff;
-  --tron-dark-cyan: rgba(0, 240, 255, 0.1);
+  --tron-dark-cyan: rgba(0, 240, 255, 0.15);
   --tron-blue: #0066ff;
   --text-primary: #ffffff;
-  --text-muted: #819bb0;
+  --text-muted: #d0dee9;
+  /* Lightened significantly to pass WCAG color contrast accessibility scales */
   --font-mono: 'Courier New', Courier, monospace;
 }
 
@@ -28,7 +29,7 @@ body {
   padding: 20px;
 }
 
-/* --- THE REFINED RESPONSIBLY ENGINEERED TRON VECTOR GRID --- */
+/* --- THE PERFORMANCE CSS VECTOR GRID --- */
 .vector-grid-overlay {
   position: fixed;
   top: 0;
@@ -39,19 +40,28 @@ body {
     linear-gradient(to right, rgba(0, 240, 255, 0.02) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 240, 255, 0.02) 1px, transparent 1px);
   background-size: 60px 60px;
-  z-index: 1;
+  z-index: -1;
+  /* Placed safely behind all interactive text components */
   pointer-events: none;
 }
 
-/* --- SCREEN ARCHITECTURE HUD WRAPPER --- */
+/* --- LAYOUT HUD WRAPPER --- */
 .app-viewport {
-  position: relative;
-  z-index: 10;
   width: 100%;
   max-width: 1100px;
   display: flex;
   flex-direction: column;
   gap: 30px;
+}
+
+/* --- ACCESSIBILITY HIGHLIGHT (KEYBOARD NAVIGATION) --- */
+/* Ensures sight-impaired or keyboard-only navigators clearly see where their active cursor is focused */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--tron-cyan);
+  outline-offset: 4px;
 }
 
 /* --- RESPONSIVE PREMIUM HEADER & NAVIGATION --- */
@@ -62,7 +72,7 @@ body {
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
-  border-bottom: 1px solid var(--tron-dark-cyan);
+  border-bottom: 2px solid var(--tron-dark-cyan);
   padding-bottom: 20px;
 }
 
@@ -88,51 +98,39 @@ body {
   display: flex;
   gap: 15px;
   flex-wrap: wrap;
+  list-style: none;
+  /* Semantic nav lists reset */
 }
 
 .nav-link {
+  display: inline-block;
   background: transparent;
   border: 1px solid var(--tron-dark-cyan);
   color: var(--text-muted);
-  font-family: inherit;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: bold;
   padding: 10px 18px;
-  cursor: pointer;
-  transition: all 0.25s ease;
+  text-decoration: none;
+  /* Removes standard browser links underline style */
+  transition: all 0.2s ease;
 }
 
 .nav-link:hover,
 .nav-link.active {
   color: var(--text-primary);
   border-color: var(--tron-cyan);
-  background: rgba(0, 240, 255, 0.03);
-  box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
+  background: rgba(0, 240, 255, 0.05);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
 }
 
-/* --- MAIN INTERFACE DISPLAY DECK CONTAINER --- */
+/* --- PREMIUM TRON MAIN DISPLAY BOX --- */
 .display-deck {
-  position: relative;
-  background: rgba(3, 7, 15, 0.9);
+  background: rgba(3, 7, 15, 0.95);
   border: 1px solid var(--tron-blue);
   padding: 40px;
   min-height: 480px;
   clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 0 30px rgba(0, 102, 255, 0.03);
-}
-
-.content-wrapper {
-  animation: fadeInView 0.3s ease-out;
-}
-
-@keyframes fadeInView {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
 }
 
 .content-title {
@@ -144,14 +142,14 @@ body {
 }
 
 .summary-text {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--text-muted);
   line-height: 1.8;
   max-width: 750px;
   margin-bottom: 40px;
 }
 
-/* --- RESPONSIBLY ADAPTIVE GRID SYSTEMS MAPPING --- */
+/* --- RESPONSIVE ADAPTIVE CARD GRID --- */
 .matrix-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -160,7 +158,7 @@ body {
 
 .matrix-card {
   position: relative;
-  border: 1px solid rgba(0, 102, 255, 0.15);
+  border: 1px solid rgba(0, 102, 255, 0.25);
   background: rgba(2, 4, 8, 0.5);
   padding: 25px;
 }
@@ -174,34 +172,48 @@ body {
   background: var(--tron-blue);
 }
 
-.matrix-card h3 {
-  font-size: 1rem;
+.matrix-card h2 {
+  /* Shifted down to h2 markup layout tree for accurate document hierarchy outline */
+  font-size: 1.05rem;
   letter-spacing: 1px;
   margin-bottom: 10px;
   color: var(--tron-cyan);
 }
 
 .matrix-card p {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
   line-height: 1.6;
-  margin-bottom: 15px;
 }
 
-/* --- LIVE WIDGET INPUTS & BUTTONS --- */
-.tron-input {
+/* --- ACCESSIBLE STYLED ACCENT FORMS COMPONENTS --- */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+  max-width: 500px;
+}
+
+.form-label {
+  font-size: 0.8rem;
+  color: var(--tron-cyan);
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.tron-field {
   background: rgba(2, 4, 8, 0.8);
   border: 1px solid var(--tron-dark-cyan);
   padding: 12px;
   color: #fff;
   font-family: inherit;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   outline: none;
   width: 100%;
-  margin-bottom: 10px;
 }
 
-.tron-input:focus {
+.tron-field:focus {
   border-color: var(--tron-cyan);
 }
 
@@ -209,30 +221,19 @@ body {
   background: transparent;
   border: 1px solid var(--tron-cyan);
   color: var(--tron-cyan);
-  padding: 10px 20px;
+  padding: 12px 24px;
   font-family: inherit;
   font-weight: bold;
   cursor: pointer;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
+  transition: all 0.2s;
 }
 
 .tron-btn:hover {
   background: rgba(0, 240, 255, 0.1);
 }
 
-.binary-output {
-  margin-top: 10px;
-  background: #000;
-  padding: 10px;
-  border: 1px dashed var(--tron-cyan);
-  font-size: 0.8rem;
-  color: #39ff14;
-  /* Matrix Green */
-  word-break: break-all;
-  min-height: 35px;
-}
-
-/* --- RESPONSIVE MEDIA TUNING CONFIGURATIONS --- */
+/* --- MOBILE RESPONSIVE TUNING OVERRIDES --- */
 @media (max-width: 768px) {
   body {
     padding: 15px;
@@ -250,4 +251,68 @@ body {
   .content-title {
     font-size: 1.7rem;
   }
+}
+
+/* Hide the checkbox entirely from the screen */
+.menu-checkbox {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Hide the hamburger icon on Desktop by default */
+.menu-button {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.burger-line {
+  width: 25px;
+  height: 2px;
+  background-color: var(--tron-cyan);
+  transition: transform 0.3s ease;
+}
+
+/* --- MOBILE BREAKPOINT CHANGES --- */
+@media (max-width: 768px) {
+  .menu-button {
+    display: flex;
+    /* Show the burger icon on mobile screens */
+    z-index: 100;
+  }
+
+  .app-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    /* Hides the menu completely off-screen to the right */
+    width: 250px;
+    height: 100vh;
+    background-color: rgba(4, 8, 16, 0.98);
+    border-left: 2px solid var(--tron-cyan);
+    flex-direction: column;
+    padding: 80px 20px 20px 20px;
+    gap: 20px;
+    transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Creates a slick sci-fi slide animation */
+    z-index: 90;
+  }
+
+  /* THE CSS MAGIC: When the invisible checkbox is checked... */
+  /* Find its sibling (.app-nav) and change its right position to 0! */
+  .menu-checkbox:checked~.app-nav {
+    right: 0;
+  }
+}
+
+.project-desc {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  /* Ensures clean line tracking that passes cognitive accessibility needs */
+  color: var(--text-muted);
 }
